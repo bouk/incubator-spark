@@ -176,7 +176,7 @@ private[spark] class Master(host: String, port: Int, webUiPort: Int) extends Act
       } else {
         val worker = new WorkerInfo(id, workerHost, workerPort, cores, memory,
           sender, workerWebUiPort, publicAddress)
-        if(registerWorker(worker)) {
+        if (registerWorker(worker)) {
           persistenceEngine.addWorker(worker)
           sender ! RegisteredWorker(masterUrl, masterWebUiUrl)
           schedule()
